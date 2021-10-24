@@ -1,9 +1,9 @@
 import User from '@/api/user'
 import router, { resetRouter } from '@/router'
-import { getToken, setToken, removeToken } from '@/utils/auth'
-
+import Cookies from 'js-cookie'
+const TokenKey = 'Admin-Token'
 const state = {
-  token: getToken(),
+  token: Cookies.get(TokenKey),
   name: '',
   avatar: '',
   introduction: '',
@@ -39,8 +39,8 @@ const actions = {
     return new Promise((resolve, reject) => {
       User.login({ username: username.trim(), password: password }).then(async response => {
         const { content } = response
-        await commit('SET_TOKEN', content.token)
-        await setToken(content.token)
+        commit('SET_TOKEN', content.token)
+        Cookies.set(TokenKey, content.token)
         resolve(response)
       }).catch(error => {
         reject(error)
@@ -81,7 +81,7 @@ const actions = {
       User.logout(state.token).then(() => {
         commit('SET_TOKEN', '')
         commit('SET_ROLES', [])
-        removeToken()
+        Cookies.remove(TokenKey)
         resolve()
       }).catch(error => {
         reject(error)
@@ -94,7 +94,7 @@ const actions = {
     return new Promise(resolve => {
       commit('SET_TOKEN', '')
       commit('SET_ROLES', [])
-      removeToken()
+      Cookies.remove(TokenKey)
       resolve()
     })
   },
@@ -117,8 +117,7 @@ const actions = {
       const token = role + '-token'
 
       commit('SET_TOKEN', token)
-      setToken(token)
-
+      Cookies.set(TokenKey, token)
       const { roles } = await dispatch('getInfo')
       resetRouter()
       // 根据角色生成可访问的路线图

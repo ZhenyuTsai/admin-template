@@ -18,6 +18,7 @@ const webpackProvidePlugin = new webpack.ProvidePlugin({
 })
 module.exports = {
   publicPath: './',
+  productionSourceMap: false,
   configureWebpack: config => {
     config.plugins.push(webpackProvidePlugin)
     if (process.env.NODE_ENV === 'production') {

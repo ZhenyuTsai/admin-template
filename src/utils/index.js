@@ -1,10 +1,13 @@
-export function formatDate (date, fmt = 'yyyy-MM-dd') {
-  /**
-   * date:需要格式化的日期Date()类型
-   * fmt：日期格式 yyyy-MM-dd
-   * @param  {[Date,str]} y [description]
-   * @return {[type]}   [description]
-   */
+/**
+ * @author ZhenYuTsai
+ * @description 格式化日期
+ * @return {Sting} 格式后的日期
+ * @lastEditors ZhenYuTsai
+ * @param {[Date,Number]} val 需要格式化的日期Date()类型
+ * @param {String} fmt 格式模板，默认'yyyy-MM-dd'
+ */
+export function formatDate (val, fmt = 'yyyy-MM-dd') {
+  const date = new Date(val)
   if (/(y+)/.test(fmt)) {
     fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length))
   }
@@ -23,14 +26,16 @@ export function formatDate (date, fmt = 'yyyy-MM-dd') {
   }
   return fmt
 }
-
-export function formatDatetime (date, fmt = 'yyyy-MM-dd hh:mm:ss') {
-  /**
-   * date:需要格式化的日期Date()类型
-   * fmt：日期格式 yyyy-MM-dd hh:mm:ss
-   * @param  {[Date,str]} y [description]
-   * @return {[type]}   [description]
-   */
+/**
+ * @author ZhenYuTsai
+ * @description 格式化日期时间
+ * @return {Sting} 格式后的日期时间
+ * @lastEditors ZhenYuTsai
+ * @param {[Date,Number]} val 需要格式化的日期Date()类型
+ * @param {String} fmt 格式模板，默认'yyyy-MM-dd hh:mm:ss'
+ */
+export function formatDatetime (val, fmt = 'yyyy-MM-dd hh:mm:ss') {
+  const date = new Date(val)
   if (/(y+)/.test(fmt)) {
     fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length))
   }
@@ -49,13 +54,15 @@ export function formatDatetime (date, fmt = 'yyyy-MM-dd hh:mm:ss') {
   }
   return fmt
 }
-
-export function formatPercentile (val) {
-  /**
-   * @Description 处理金额千分号
-   * @Param {value}
-   * @Return {String}
-   */
+/**
+ * @author ZhenYuTsai
+ * @description 处理金额千分号
+ * @return {String} 千分号分隔的值
+ * @lastEditors ZhenYuTsai
+ * @param {[Number,String]} value
+ */
+export function formatPercentile (value) {
+  let val = value
   val = val.toString().replace(/\$|,/g, '')
   if (isNaN(val)) {
     val = '0'
