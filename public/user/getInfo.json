@@ -1,0 +1,16 @@
+{
+    "code": 0,
+    "message": "成功",
+    "content": {
+        "result": "0",
+        "name": "测试",
+        "userNo": "admin",
+        "comCode": "86",
+        "comName": "总公司",
+        "token": "68915b1cf4814329bf4108e553e40a05",
+        "avatar": "https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png",
+        "introduction": null,
+        "roles": ["admin","user"],
+        "resultMessage": null
+    }
+}

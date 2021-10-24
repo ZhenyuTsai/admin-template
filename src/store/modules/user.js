@@ -37,11 +37,10 @@ const actions = {
   login ({ commit }, userInfo) {
     const { username, password } = userInfo
     return new Promise((resolve, reject) => {
-      User.login({ username: username.trim(), password: password }).then(async response => {
-        const { content } = response
-        commit('SET_TOKEN', content.token)
-        Cookies.set(TokenKey, content.token)
-        resolve(response)
+      User.login({ username: username.trim(), password: password }).then(async res => {
+        Cookies.set(TokenKey, res.token)
+        commit('SET_TOKEN', res.token)
+        resolve(res)
       }).catch(error => {
         reject(error)
       })
@@ -51,24 +50,21 @@ const actions = {
   // 获取用户信息
   getInfo ({ commit, state }) {
     return new Promise((resolve, reject) => {
-      User.getInfo(state.token).then(response => {
-        const { content } = response
-
-        if (!content) {
+      User.getInfo({ token: state.token }).then(res => {
+        if (!res) {
           reject(new Error('Verification failed, please Login again.'))
         }
 
-        const { roles, name, avatar, introduction } = content
+        const { roles, name, avatar, introduction } = res
 
         if (!roles || roles.length <= 0) {
           reject(new Error('getInfo: roles must be a non-null array!'))
         }
-
         commit('SET_ROLES', roles)
         commit('SET_NAME', name)
         commit('SET_AVATAR', avatar)
         commit('SET_INTRODUCTION', introduction)
-        resolve(content)
+        resolve(res)
       }).catch(error => {
         reject(error)
       })
@@ -78,7 +74,7 @@ const actions = {
   // 用户退出
   logout ({ commit, state }) {
     return new Promise((resolve, reject) => {
-      User.logout(state.token).then(() => {
+      User.logout({ token: state.token }).then(() => {
         commit('SET_TOKEN', '')
         commit('SET_ROLES', [])
         Cookies.remove(TokenKey)
@@ -98,13 +94,13 @@ const actions = {
       resolve()
     })
   },
+
   // 获取导航
   getMenus ({ commit, state }) {
     return new Promise((resolve, reject) => {
-      User.getMenus(state.token).then((res) => {
-        const { content } = res
-        commit('SET_MENUS', content.menusList)
-        resolve(content)
+      User.getMenus({ token: state.token }).then((res) => {
+        commit('SET_MENUS', res.menusList)
+        resolve(res)
       }).catch(error => {
         reject(error)
       })

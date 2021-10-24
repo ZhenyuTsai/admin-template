@@ -11,10 +11,20 @@ export const constantRoutes = [
     path: '/',
     component: Layout,
     redirect: '/home',
-    children: [{ path: '/home', name: 'home', /* webpackChunkName:Home */ component: () => import('../views/home/index.vue') }]
+    children: [{
+      path: '/home',
+      name: 'home',
+      component: () => import(/* webpackChunkName:Home */ '../views/home/index.vue')
+    }]
   },
-  { path: '/login', component: Login },
-  { path: '/404', component: () => import('@/views/error/404.vue') }
+  {
+    path: '/login',
+    component: Login
+  },
+  {
+    path: '/404',
+    component: () => import('@/views/error/404.vue')
+  }
 ]
 
 const createRouter = () => new VueRouter({
@@ -25,17 +35,22 @@ const createRouter = () => new VueRouter({
 const router = createRouter()
 // 异步挂载的路由
 // 动态需要根据权限加载的路由表
-export const asyncRoutes = [
-  {
-    path: '/test',
-    component: Layout,
-    redirect: 'test',
-    meta: { role: ['admin', 'user'] }, // 页面需要的权限
-    children: [
-      { path: '/test/item', component: () => import('@/views/test/index.vue') }
-    ]
-  },
-  { path: '*', redirect: '/404' }
+export const asyncRoutes = [{
+  path: '/test',
+  component: Layout,
+  redirect: 'test',
+  meta: {
+    role: ['admin']
+  }, // 页面需要的权限
+  children: [{
+    path: '/test/item',
+    component: () => import('@/views/test/index.vue')
+  }]
+},
+{
+  path: '*',
+  redirect: '/404'
+}
 ]
 
 export function resetRouter () {

@@ -6,13 +6,14 @@ import {
 } from 'element-ui'
 
 export default (Vue) => {
-  const whiteList = ['/login', '/auth-redirect'] // 没有重定向白名单
+  const whiteList = ['/login'] // 没有重定向白名单
 
   router.beforeEach(async (to, from, next) => {
     // start progress bar
     NProgress.start()
     // 确定用户是否已登录
     const hasToken = store.getters.token
+    console.log('hasToken', hasToken)
     if (hasToken) {
       if (to.path === '/login') {
         // 如果已登录，则重定向到主页
@@ -23,6 +24,7 @@ export default (Vue) => {
       } else {
         // 确定用户是否已通过getInfo获得其权限角色
         const hasRoles = store.getters.roles && store.getters.roles.length > 0
+        console.log('hasRoles', hasRoles)
         if (hasRoles) {
           next()
         } else {
@@ -38,7 +40,7 @@ export default (Vue) => {
             const accessRoutes = await store.dispatch('permission/generateRoutes', roles)
 
             // 动态添加可访问的路由
-            router.addRoutes(accessRoutes)
+            await router.addRoutes(accessRoutes)
 
             // hack方法以确保addRoutes是完整的
             // 设置replace：true，因此导航不会留下历史记录

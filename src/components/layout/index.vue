@@ -20,15 +20,7 @@ export default {
   },
   computed: {
     menus () {
-      // return this.$store.getters.menus
-      return [
-        {
-          path: '/home',
-          icon: 'el-icon-eleme',
-          name: '首页',
-          children: []
-        }
-      ]
+      return this.$store.getters.menus
     }
   }
 }

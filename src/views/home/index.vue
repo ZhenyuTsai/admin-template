@@ -14,8 +14,8 @@ export default {
     }
   },
   mounted () {
-    // console.log('jjj', $, 132213213)
-    // console.log('121', $('#app'))
+    console.log('121', $('#app'))
+    console.log(process.env)
   }
 }
 </script>
