@@ -14,7 +14,7 @@ export const constantRoutes = [
     children: [{
       path: '/home',
       name: 'home',
-      component: () => import(/* webpackChunkName:Home */ '../views/home/index.vue')
+      component: () => import(/* webpackChunkName:'Home' */ '../views/home/index.vue')
     }]
   },
   {
@@ -44,7 +44,7 @@ export const asyncRoutes = [{
   }, // 页面需要的权限
   children: [{
     path: '/test/item',
-    component: () => import('@/views/test/index.vue')
+    component: () => import(/* webpackChunkName:'test' */ '@/views/test/index.vue')
   }]
 },
 {
