@@ -52,7 +52,7 @@ export default (Vue) => {
             // 删除令牌并进入登录页面以重新登录
             await store.dispatch('user/resetToken')
             Message.error(error || 'Has Error')
-            next('/login')
+            next('/login?redirect=' + to.path)
             NProgress.done()
           }
         }
@@ -63,7 +63,7 @@ export default (Vue) => {
         next()
       } else {
         // 其他无权访问的页面将重定向到登录页面。
-        next('/login')
+        next('/login?redirect=' + to.path)
         NProgress.done()
       }
     }

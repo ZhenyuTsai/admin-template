@@ -28,7 +28,7 @@ export default {
   methods: {
     async handleClick () {
       await this.$store.dispatch('user/login', this.form)
-      this.$router.push('/').catch(() => {})
+      this.$router.push(this.$route.query.redirect || '/').catch(() => {})
     }
   }
 }
