@@ -20,7 +20,7 @@ export default {
   methods: {
     async handleCommand (command) {
       if (command === 'logout') {
-        await this.$store.dispatch('user/logout')
+        await this.$store.dispatch('logout')
         this.$router.push('/login')
       }
     }

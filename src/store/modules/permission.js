@@ -60,7 +60,7 @@ const actions = {
 }
 
 export default {
-  namespaced: true,
+  namespaced: false,
   state,
   mutations,
   actions

@@ -12,6 +12,10 @@ import directives from './directives'
 import components from './components'
 import middleware from './middleware'
 
+import '../mock/index'
+/* if (process.env.VUE_APP_USE_MOCK === 'true') {
+} */
+
 Vue.config.productionTip = false
 Vue.prototype.$np = NProgress
 NProgress.configure({

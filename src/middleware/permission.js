@@ -30,14 +30,14 @@ export default (Vue) => {
         } else {
           try {
             // 获取导航菜单
-            await store.dispatch('user/getMenus')
+            await store.dispatch('getMenus')
             // 获取用户信息
             // 注意：角色必须是对象数组！例如：['admin']或，['developer'，'editor']
             const {
               roles
-            } = await store.dispatch('user/getInfo')
+            } = await store.dispatch('getInfo')
             // 根据角色生成可访问的路由
-            const accessRoutes = await store.dispatch('permission/generateRoutes', roles)
+            const accessRoutes = await store.dispatch('generateRoutes', roles)
 
             // 动态添加可访问的路由
             await router.addRoutes(accessRoutes)
@@ -50,7 +50,7 @@ export default (Vue) => {
             })
           } catch (error) {
             // 删除令牌并进入登录页面以重新登录
-            await store.dispatch('user/resetToken')
+            await store.dispatch('resetToken')
             Message.error(error || 'Has Error')
             next('/login?redirect=' + to.path)
             NProgress.done()

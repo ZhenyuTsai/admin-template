@@ -117,7 +117,7 @@ const actions = {
       const { roles } = await dispatch('getInfo')
       resetRouter()
       // 根据角色生成可访问的路线图
-      const accessRoutes = await dispatch('permission/generateRoutes', roles, { root: true })
+      const accessRoutes = await dispatch('generateRoutes', roles, { root: true })
 
       // 动态添加可访问的路由
       router.addRoutes(accessRoutes)
@@ -128,7 +128,7 @@ const actions = {
 }
 
 export default {
-  namespaced: true,
+  namespaced: false,
   state,
   mutations,
   actions
