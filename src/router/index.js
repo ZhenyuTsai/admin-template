@@ -14,7 +14,7 @@ export const constantRoutes = [
     children: [{
       path: '/home',
       name: 'home',
-      component: () => import(/* webpackChunkName:'Home' */ '../views/home/index.vue')
+      component: () => import(/* webpackChunkName:'Home' */ '@/views/Home/index.vue')
     }]
   },
   {
@@ -23,7 +23,7 @@ export const constantRoutes = [
   },
   {
     path: '/404',
-    component: () => import('@/views/error/404.vue')
+    component: () => import(/* webpackChunkName:'Error' */ '@/views/Error/404.vue')
   }
 ]
 
