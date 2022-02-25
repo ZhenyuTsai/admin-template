@@ -93,6 +93,7 @@ export default {
 
 <style lang="less" scoped>
 .aside{
+  height: 100%;
   background-color: #324157;
   overflow: auto;
   /deep/.el-menu{
@@ -105,9 +106,11 @@ export default {
     position: sticky;
     top: 0;
     left: 0;
+    z-index: 5;
     padding: 15px;
     color: #bfcbd9;
     text-align: center;
+    background-color: #324157;
     border-bottom: 1px solid #435060;
   }
 }
