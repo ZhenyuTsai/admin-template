@@ -26,6 +26,7 @@ export default {
     position: sticky;
     top: 0;
     left: 0;
+    z-index: 5;
     background: #fff;
   }
   .content{
