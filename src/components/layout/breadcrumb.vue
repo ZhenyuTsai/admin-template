@@ -1,5 +1,5 @@
 <template>
-  <el-breadcrumb class="breadcrumb" separator-class="el-icon-arrow-right">
+  <el-breadcrumb v-if="!route.meta.noShowBreadcrumb" class="breadcrumb" separator-class="el-icon-arrow-right">
     <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
     <el-breadcrumb-item v-for="(item,index) in breadCrumbList" :key="item.path" :to="breadCrumbList.length-1===index?'':item.path">{{item.title}}</el-breadcrumb-item>
   </el-breadcrumb>
@@ -15,6 +15,9 @@ export default {
           title: item.meta.title
         }
       })
+    },
+    route () {
+      return this.$route
     }
   }
 }
