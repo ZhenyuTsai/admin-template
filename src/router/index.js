@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Login from '@/views/login/index.vue'
+import Login from '@/views/Login/index.vue'
 import Layout from '@/components/layout/index.vue'
 Vue.use(VueRouter)
 
@@ -44,7 +44,7 @@ export const asyncRoutes = [{
   }, // 页面需要的权限
   children: [{
     path: '/test/item',
-    component: () => import(/* webpackChunkName:'test' */ '@/views/test/index.vue')
+    component: () => import(/* webpackChunkName:'test' */ '@/views/Test/index.vue')
   }]
 },
 {
