@@ -59,4 +59,20 @@
   .clearfix:after {
       clear: both;
   }
+
+  /** 滚动条样式-宽高 **/
+  ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+  }
+  /** 滚动条样式-轨道 **/
+  ::-webkit-scrollbar-track{
+    background-color: rgba(50,50,50,.1);
+    border-radius:1em;
+  }
+  /** 滚动条样式-滑块 **/
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(50,50,50,.3);
+    border-radius:1em;
+  }
 </style>

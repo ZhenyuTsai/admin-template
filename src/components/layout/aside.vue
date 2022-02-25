@@ -28,14 +28,24 @@
                     <i :class="item2.icon"></i>
                     <span>{{item2.name}}</span>
                   </template>
+                  <template v-for="item3 in item2.children">
+                    <!-- 四级标题 -->
+                    <el-submenu v-if="item3.children && item3.children.length" :index="item3.path" :key="item3.path">
+                      <template slot="title">
+                        <i :class="item3.icon"></i>
+                        <span>{{item3.name}}</span>
+                      </template>
+                    </el-submenu>
+                    <el-menu-item v-else :index="item3.path" :key="item3.path+'only'"><i :class="item3.icon"></i><span slot="title">{{item3.name}}</span></el-menu-item>
+                  </template>
                 </el-submenu>
-                <el-menu-item v-else :index="item2.path" :key="item2.path"><i :class="item2.icon"></i><span slot="title">{{item2.name}}</span></el-menu-item>
+                <el-menu-item v-else :index="item2.path" :key="item2.path+'only'"><i :class="item2.icon"></i><span slot="title">{{item2.name}}</span></el-menu-item>
               </template>
             </el-submenu>
-            <el-menu-item v-else :index="item1.path" :key="item1.path"><i :class="item1.icon"></i><span slot="title">{{item1.name}}</span></el-menu-item>
+            <el-menu-item v-else :index="item1.path" :key="item1.path+'only'"><i :class="item1.icon"></i><span slot="title">{{item1.name}}</span></el-menu-item>
           </template>
         </el-submenu>
-        <el-menu-item v-else :index="item.path" :key="item.path"><i :class="item.icon"></i><span slot="title">{{item.name}}</span></el-menu-item>
+        <el-menu-item v-else :index="item.path" :key="item.path+'only'"><i :class="item.icon"></i><span slot="title">{{item.name}}</span></el-menu-item>
       </template>
     </el-menu>
   </div>
@@ -69,7 +79,8 @@ export default {
 <style lang="less" scoped>
 .aside{
   width: 265px;
-  background-color: #545c64;
+  background-color: #324157;
+  overflow: auto;
   /deep/.el-menu{
     border-right:none;
   }
