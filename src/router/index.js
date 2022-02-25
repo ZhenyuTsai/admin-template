@@ -41,6 +41,7 @@ const createRouter = () => new VueRouter({
 const router = createRouter()
 // 异步挂载的路由
 // 动态需要根据权限加载的路由表
+
 export const asyncRoutes = [
   videoPreservation,
   videoClaim,
@@ -48,6 +49,18 @@ export const asyncRoutes = [
   systemAdmin,
   monitorAdmin,
   artificialExamine,
+  {
+    path: '/test',
+    component: Layout,
+    redirect: 'test',
+    meta: {
+      role: ['admin']
+    }, // 页面需要的权限
+    children: [{
+      path: '/test/item',
+      component: () => import(/* webpackChunkName:'test' */ '@/views/Test/index.vue')
+    }]
+  },
   {
     path: '*',
     redirect: '/404'
