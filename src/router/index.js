@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Login from '@/views/Login/index.vue'
 import Layout from '@/components/layout/index.vue'
 import videoPreservation from './modules/videoPreservation'
 import videoClaim from './modules/videoClaim'
@@ -20,16 +19,28 @@ export const constantRoutes = [
     children: [{
       path: '/home',
       name: 'home',
-      component: () => import(/* webpackChunkName:'Home' */ '@/views/Home/index.vue')
+      component: () => import(/* webpackChunkName:'Home' */ '@/views/Home/index.vue'),
+      meta: {
+        noShowBreadcrumb: true,
+        title: '首页'
+      }
     }]
   },
   {
     path: '/login',
-    component: Login
+    component: () => import(/* webpackChunkName:'Login' */ '@/views/Login/index.vue'),
+    meta: {
+      noShowBreadcrumb: true,
+      title: '登录'
+    }
   },
   {
     path: '/404',
-    component: () => import(/* webpackChunkName:'Error' */ '@/views/Error/404.vue')
+    component: () => import(/* webpackChunkName:'Error' */ '@/views/Error/404.vue'),
+    meta: {
+      noShowBreadcrumb: true,
+      title: '404'
+    }
   }
 ]
 
@@ -61,13 +72,18 @@ export const asyncRoutes = [
       path: '/test/item',
       component: () => import(/* webpackChunkName:'test' */ '@/views/Test/index.vue'),
       meta: {
+        noShowBreadcrumb: false,
         title: '测试页面'
       }
     }]
   },
   {
     path: '*',
-    redirect: '/404'
+    redirect: '/404',
+    meta: {
+      noShowBreadcrumb: false,
+      title: '404'
+    }
   }
 ]
 

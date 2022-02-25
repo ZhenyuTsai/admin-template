@@ -12,20 +12,33 @@ export default {
   component: Layout,
   redirect: '/artificialExamine/queryList',
   meta: {
-    role: ['admin']
+    role: ['admin'],
+    title: '人工质检'
   }, // 页面需要的权限
   children: [
     {
       path: '/artificialExamine/examineAppeal',
-      component: () => import(/* webpackChunkName:'artificialExamine' */ '@/views/modules/ArtificialExamine/examineAppeal/index.vue')
+      component: () => import(/* webpackChunkName:'artificialExamine' */ '@/views/modules/ArtificialExamine/examineAppeal/index.vue'),
+      meta: {
+        noShowBreadcrumb: false,
+        title: '质检申诉'
+      }
     },
     {
       path: '/artificialExamine/examineDetail',
-      component: () => import(/* webpackChunkName:'artificialExamine' */ '@/views/modules/ArtificialExamine/examineDetail/index.vue')
+      component: () => import(/* webpackChunkName:'artificialExamine' */ '@/views/modules/ArtificialExamine/examineDetail/index.vue'),
+      meta: {
+        noShowBreadcrumb: false,
+        title: '质检详情'
+      }
     },
     {
       path: '/artificialExamine/queryList',
-      component: () => import(/* webpackChunkName:'artificialExamine' */ '@/views/modules/ArtificialExamine/queryList/index.vue')
+      component: () => import(/* webpackChunkName:'artificialExamine' */ '@/views/modules/ArtificialExamine/queryList/index.vue'),
+      meta: {
+        noShowBreadcrumb: false,
+        title: '查询列表'
+      }
     }
   ]
 }
