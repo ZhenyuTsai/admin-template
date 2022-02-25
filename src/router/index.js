@@ -40,11 +40,15 @@ export const asyncRoutes = [{
   component: Layout,
   redirect: 'test',
   meta: {
+    title: '测试模块',
     role: ['admin']
   }, // 页面需要的权限
   children: [{
     path: '/test/item',
-    component: () => import(/* webpackChunkName:'test' */ '@/views/Test/index.vue')
+    component: () => import(/* webpackChunkName:'test' */ '@/views/Test/index.vue'),
+    meta: {
+      title: '测试页面'
+    }
   }]
 },
 {
