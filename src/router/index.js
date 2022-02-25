@@ -63,10 +63,10 @@ export const asyncRoutes = [
   {
     path: '/test',
     component: Layout,
-    redirect: 'test',
+    redirect: '/test/item',
     meta: {
       role: ['admin'],
-      tite: '测试模块'
+      title: '测试模块'
     }, // 页面需要的权限
     children: [{
       path: '/test/item',
