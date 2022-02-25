@@ -102,6 +102,9 @@ export default {
       width: 240px;
   }
   .toggle{
+    position: sticky;
+    top: 0;
+    left: 0;
     padding: 15px;
     color: #bfcbd9;
     text-align: center;

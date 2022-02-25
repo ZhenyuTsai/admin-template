@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <div>
+    <div class="top">
       <z-bread-crumb></z-bread-crumb>
     </div>
     <div class="content">
@@ -21,13 +21,15 @@ export default {
 <style lang="less" scoped>
 .main{
   height: 100%;
-  box-sizing: border-box;
-  display: grid;
-  grid-template-rows: auto 1fr;
-  grid-template-columns: 1fr;
+  overflow: auto;
+  .top{
+    position: sticky;
+    top: 0;
+    left: 0;
+    background: #fff;
+  }
   .content{
     padding: 0 20px;
-    overflow: auto;
   }
 }
 </style>
