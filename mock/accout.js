@@ -56,6 +56,18 @@ export default {
             children: []
           },
           {
+            path: '/microFrontend/blog/',
+            icon: 'el-icon-eleme',
+            name: '前端E站',
+            children: []
+          },
+          {
+            path: '/microFrontend/claims/Iy9yZXBvcnRSZWdpc3RyYXRpb24=',
+            icon: 'el-icon-eleme',
+            name: '理赔管理',
+            children: []
+          },
+          {
             path: '/videoPreservation',
             icon: 'el-icon-goods',
             name: '保全',
