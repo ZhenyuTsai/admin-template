@@ -7,7 +7,7 @@ import userAdmin from './modules/userAdmin'
 import systemAdmin from './modules/systemAdmin'
 import monitorAdmin from './modules/monitorAdmin'
 import artificialExamine from './modules/artificialExamine'
-import microFrontend from './microFrontend'
+import microFrontend from './modules/microFrontend'
 Vue.use(VueRouter)
 
 // 所有权限通用路由表
@@ -25,8 +25,7 @@ export const constantRoutes = [
         noShowBreadcrumb: true,
         title: '首页'
       }
-    },
-    microFrontend
+    }
     ]
   },
   {
@@ -63,6 +62,7 @@ export const asyncRoutes = [
   systemAdmin,
   monitorAdmin,
   artificialExamine,
+  microFrontend,
   {
     path: '/test',
     component: Layout,

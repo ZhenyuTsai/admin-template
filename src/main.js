@@ -27,7 +27,7 @@ Vue.use(components)
 Vue.use(middleware)
 Vue.use(ElementUI)
 
-new Vue({
+window._app_ = new Vue({
   router,
   store,
   render: h => h(App)

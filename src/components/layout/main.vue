@@ -29,8 +29,5 @@ export default {
     z-index: 5;
     background: #fff;
   }
-  .content{
-    padding: 0 20px;
-  }
 }
 </style>

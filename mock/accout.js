@@ -56,16 +56,29 @@ export default {
             children: []
           },
           {
-            path: '/microFrontend/blog/',
+            path: '/home',
             icon: 'el-icon-eleme',
-            name: '前端E站',
-            children: []
-          },
-          {
-            path: '/microFrontend/claims/Iy9yZXBvcnRSZWdpc3RyYXRpb24=',
-            icon: 'el-icon-eleme',
-            name: '理赔管理',
-            children: []
+            name: '单点登录',
+            children: [
+              {
+                path: '/microFrontend/blog/',
+                icon: 'el-icon-eleme',
+                name: '前端E站',
+                children: []
+              },
+              {
+                path: '/microFrontend/claims/Iy9yZXBvcnRSZWdpc3RyYXRpb24=',
+                icon: 'el-icon-eleme',
+                name: '理赔管理',
+                children: []
+              },
+              {
+                path: '/integrate/admin',
+                icon: 'el-icon-eleme',
+                name: '集成管理',
+                children: []
+              }
+            ]
           },
           {
             path: '/videoPreservation',

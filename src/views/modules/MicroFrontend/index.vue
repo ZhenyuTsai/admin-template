@@ -13,11 +13,14 @@ export default {
       loading: false
     }
   },
-  created () {
+  mounted () {
     this.$nextTick(() => {
       _self = this
       this.initpage()
     })
+    window.addEventListener('message', ({ data }) => {
+      console.log('data', 121212121)
+    }, false)
   },
   methods: {
     initpage () {
