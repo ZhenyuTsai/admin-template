@@ -233,6 +233,7 @@ export default {
 <style lang="less" scoped>
 .login {
   height: 100%;
+  min-width: 1200px;
   background-image: linear-gradient(#3802b1, #2885f1);
   display: flex;
   justify-content: space-around;
