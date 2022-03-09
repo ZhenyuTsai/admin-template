@@ -9,7 +9,9 @@
     "build-prd": "vue-cli-service build --mode prd",
     "lint": "vue-cli-service lint",
     "dev": "vue-cli-service serve --mode dev --open --copy",
-    "prd": "vue-cli-service serve --mode prd --open --copy"
+    "prd": "vue-cli-service serve --mode prd --open --copy",
+    "build-config-dev": "node ./docker/build-config.js --mode=dev",
+    "build-config-prd": "node ./docker/build-config.js --mode=prd"
   },
   "dependencies": {
     "axios": "^0.21.0",
@@ -17,6 +19,7 @@
     "element-ui": "^2.14.1",
     "jquery": "^3.5.1",
     "js-cookie": "^2.2.1",
+    "nginx-conf": "^2.0.0",
     "nprogress": "^0.2.0",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
