@@ -47,6 +47,12 @@ const actions = {
     })
   },
 
+  // 用户登录
+  setToken ({ commit }, token) {
+    commit('SET_TOKEN', token)
+    Cookies.set(TokenKey, token)
+  },
+
   // 获取用户信息
   getInfo ({ commit, state }) {
     return new Promise((resolve, reject) => {

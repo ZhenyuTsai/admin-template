@@ -1,10 +1,11 @@
 <template>
-  <div class="layout">
-    <z-header></z-header>
-    <z-aside :menusList="menus"></z-aside>
-    <z-main>
+  <div :class="{layout:isNative}">
+    <z-header v-if="isNative"></z-header>
+    <z-aside v-if="isNative" :menusList="menus"></z-aside>
+    <z-main v-if="isNative">
       <router-view/>
     </z-main>
+    <router-view v-else />
   </div>
 </template>
 
